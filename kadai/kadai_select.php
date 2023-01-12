@@ -9,14 +9,19 @@ if(
   exit('paramError');
   // なければエラー
 }
+
 $place=$_POST['place'];
 $genre=$_POST['genre'];
 $intro=$_POST['intro'];
 $type = $_FILES['pic']['type'];
-$upimg=file_get_contents($_FILES['pic']['tmp_name']);
+$upimg=$_FILES['pic']['name'];
 
-// $uploaded_path = 'image/'.$upimg;
-// $result = move_uploaded_file($_FILES['pic']['tmp_name'],$uploaded_path);
+$upload_dir = 'kadai_data/';
+$uploaded_path = date('YmdHis') . $upimg;
+$save_path = $upload_dir . $uploaded_path;
+
+$upload = move_uploaded_file($_FILES['pic']['tmp_name'],$save_path);
+
 
 // 各種項目設定
 $dbn ='mysql:dbname=kurokawa_uy03_01;charset=utf8mb4;port=3306;host=localhost';
@@ -43,7 +48,7 @@ $stmt->bindValue(':place', $place, PDO::PARAM_STR);
 $stmt->bindValue(':kind', $genre, PDO::PARAM_STR);
 $stmt->bindValue(':introduction', $intro, PDO::PARAM_STR);
 $stmt->bindValue(':img_type', $type, PDO::PARAM_STR);
-$stmt->bindValue(':photo', $upimg, PDO::PARAM_STR);
+$stmt->bindValue(':photo', $save_path, PDO::PARAM_STR);
 
 
 

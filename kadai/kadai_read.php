@@ -18,6 +18,7 @@ $sql = 'SELECT * FROM kadai_o1';
 $stmt = $pdo->prepare($sql);
 
 
+
 // SQL実行（実行に失敗すると"sql error"が実行される）
 try {
   $status = $stmt->execute();
@@ -26,25 +27,27 @@ try {
   exit();
 }
 
-echo
+
 
 // SQL実行の処理
-$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-$str = "";
-foreach ($result as $record) {
-  $str .= "
-    <tr>
-      <td>{$record["place"]}</td>
-      <td>{$record["kind"]}</td>
-      <tr>
-      <td>{$record["introduction"]}</td>
-</tr>
-<tr>
+$result = $stmt->fetchALL(PDO::FETCH_ASSOC);
+// foreach ($result as $record) {
+//   $str .= "
+//     <tr>
+//       <td>{$record["place"]}</td>
+//       <td>{$record["kind"]}</td>
+//       <tr>
 
-</tr>
-    </tr>
-  ";
-}
+//       </tr>
+//       <tr>
+//       <td>{$record["introduction"]}</td>
+// </tr>
+// <tr>
+
+// </tr>
+//     </tr>
+//   ";
+// }
 
 
 
@@ -61,7 +64,27 @@ foreach ($result as $record) {
 <body>
     <h1>負の遺産アーカイブ</h1>
     <table>
-<td><?= $str ?></td>
+
+<?php foreach ($result as $record): ?>
+        
+            <tr class="＊">
+       
+       
+            <tr><td><?php echo $record["place"]?></td></tr>
+      <tr> <td><?php echo $record["kind"]?></td></tr>
+       <tr>
+       <td style="white-space:pre-wrap"><?php echo $record["introduction"]?></td>
+ </tr>
+       <tr>
+  <td>
+<img src="<?php echo $record["photo"]?>" width="300px" height="200px" ></td>
+<td><a href='kadai_edit.php?id=<?php echo $record["id"]?>'>編集</a></td>
+<td><a href='kadai_delete.php?id=<?php echo $record["id"]?>'>delete</a></td>
+       </tr>
+      
+            
+         
+<?php endforeach; ?>
     </table>
 </body>
 
