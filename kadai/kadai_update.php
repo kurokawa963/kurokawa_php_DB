@@ -1,6 +1,7 @@
 <?php
-
+session_start();
 include('kadai_functions.php');
+check_session_id();
 
 
 if( 

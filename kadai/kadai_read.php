@@ -1,20 +1,17 @@
 <?php
 
 // DB接続
-$dbn ='mysql:dbname=kurokawa_uy03_01;charset=utf8mb4;port=3306;host=localhost';
-$user = 'root';
-$pwd = '';
-
-try {
-  $pdo = new PDO($dbn, $user, $pwd);
-} catch (PDOException $e) {
-  echo json_encode(["db error" => "{$e->getMessage()}"]);
-  exit();
-}
-
+session_start();
+include('kadai_functions.php');
 // SQL作成＆実行
+check_session_id();
+$pdo=connect_to_db();
+
+
 $sql = 'SELECT * FROM kadai_o1';
 // この内容はmyadminのSQLの中で確認しましょう！
+
+
 $stmt = $pdo->prepare($sql);
 
 
@@ -63,12 +60,17 @@ $result = $stmt->fetchALL(PDO::FETCH_ASSOC);
 </head>
 <body>
     <h1>負の遺産アーカイブ</h1>
+    <p>
+    <a href="kadai_logout.php">ログアウト</a>  
+    </p>
+    <p>
+    <a href="kadai_input.php">登録する</a>  
+    </p>
     <table>
 
 <?php foreach ($result as $record): ?>
         
             <tr class="＊">
-       
        
             <tr><td><?php echo $record["place"]?></td></tr>
       <tr> <td><?php echo $record["kind"]?></td></tr>
@@ -78,9 +80,11 @@ $result = $stmt->fetchALL(PDO::FETCH_ASSOC);
        <tr>
   <td>
 <img src="<?php echo $record["photo"]?>" width="300px" height="200px" ></td>
+</tr>
+<tr>
 <td><a href='kadai_edit.php?id=<?php echo $record["id"]?>'>編集</a></td>
 <td><a href='kadai_delete.php?id=<?php echo $record["id"]?>'>delete</a></td>
-       </tr>
+   </tr>    
       
             
          

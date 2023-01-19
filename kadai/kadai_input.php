@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>あなたの「知ってる」を教えてください</title>
 </head>
 <form action="kadai_select.php" method="POST" enctype="multipart/form-data">
 <body>

@@ -1,4 +1,6 @@
 <?php
+
+
 if(
   !isset($_POST['place']) || $_POST['place'] === ''|| 
 !isset($_POST['genre']) || $_POST['genre'] === ''||
@@ -24,16 +26,11 @@ $upload = move_uploaded_file($_FILES['pic']['tmp_name'],$save_path);
 
 
 // 各種項目設定
-$dbn ='mysql:dbname=kurokawa_uy03_01;charset=utf8mb4;port=3306;host=localhost';
-$user = 'root';
-$pwd = '';
+session_start();
+include('kadai_functions.php');
+$pdo = connect_to_db();
+check_session_id();
 
-try {
-  $pdo = new PDO($dbn, $user, $pwd);
-} catch (PDOException $e) {
-  echo json_encode(["db error" => "{$e->getMessage()}"]);
-  exit();
-}
 
 // SQL作成&実行
 // これもテーブル名以外触らない
@@ -61,7 +58,7 @@ try {
   exit();
 }
 
-header('Location:kadai_input.php');
+header('Location:kadai_read.php');
 exit();
 
 
