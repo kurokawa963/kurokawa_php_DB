@@ -3,6 +3,7 @@
 function connect_to_db()
 {
 
+
     try {
         return new PDO($dsn, $user, $pwd);
     } catch (PDOException $e) {

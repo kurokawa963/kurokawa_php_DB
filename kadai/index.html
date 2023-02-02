@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/kadai.css">
+    <title class="">となりのすごろく</title>
+
+</head>
+
+<body>
+
+    <header>
+
+
+
+
+    </header>
+
+
+    <main>
+        <section id="battle">
+            <div class="sensi">
+
+                <div class="mori">
+
+                    <img src="img/back.png" alt="背景">
+
+
+                </div>
+
+                <div class="players">
+                    <div id="start_back" class="start_back">
+                        <img src="img/back2.png" alt="スタート画面">
+                    </div>
+                    <ul id="start_titles">
+                        <li id="start_top">
+                            <div id="strat_title"><img src="img/to.png" alt="と"></div>
+
+                            <div id="strat_title"><img src="img/na.png" alt="な"></div>
+
+                            <div id="strat_title"><img src="img/ri.png" alt="り"></div>
+
+                            <div id="strat_title"><img src="img/no.png" alt="の"></div>
+                        </li>
+                        <li id="start_down">
+                            <div id="strat_title"><img src="img/su.png" alt="す"></div>
+
+                            <div id="strat_title"><img src="img/go.png" alt="ご"></div>
+
+                            <div id="strat_title"><img src="img/ro.png" alt="ろ"></div>
+
+                            <div id="strat_title"><img src="img/ku.png" alt="く"></div>
+                        </li>
+                    </ul>
+                    <div id="start" class="start">
+
+                        <img src="img/start2.png" alt="スタート">
+                        <audio src="kanta.mp3" id="kanta"></audio>
+                        <audio src="HiyokoHouse.mp3" id="play-button"></audio>
+                        <audio src="HiyokoHouse.mp3" id="play-button0"></audio>
+                        <audio src="sanpo.mp3" id="play-button1"></audio>
+
+                        <audio src="ver.mp3" id="play-button2"></audio>
+
+                    </div>
+
+                    <div class="saikoro">
+                        <p id="p1saikoro">さいころ</p>
+                        <p id="kekka"></p>
+                    </div>
+                    <div class="p1">
+
+                        <p= id="win1">
+                            <div id="road" class="roads"></div>
+
+
+                            </p>
+                            <div class="meichan"><img src="img/meichan.gif" alt="めい"></div>
+                            <div id="p1_icon"></div>
+                            <div id="goal1">めいちゃんの勝ち！</div>
+                    </div>
+                    <div class="saikoro2">
+                        <p id="p2saikoro"></p>
+                        <p id="kekka2"></p>
+                    </div>
+
+                    <div class="p2">
+
+
+                        <div id="win2">
+                            <div id="p2road" class="roads"></div>
+
+                        </div>
+                        <div class="totoro"><img src="img/totoro.gif" alt="トトロ"></div>
+                        <div id="p2_icon"></div>
+                        <div id="goal2">トトロの勝ち！</div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <section id="command">
+
+
+
+
+
+
+            <div id="result1"></div>
+            <div id="result2"></div>
+        </section>
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script>
+
+
+
+
+
+
+        // let clickCount1 = 0;
+        // let clickCount2 = 0;
+        // let clickCount0 = 0;
+
+        // const min1 = 1;
+        // const max1 = 6;
+
+
+
+        // const rannum10 = Math.floor(Math.random() * (max1 - min1 + 1)) + min1;
+        // const rannum20 = Math.floor(Math.random() * (max1 - min1 + 1)) + min1;
+        // const rannum30 = Math.floor(Math.random() * (max1 - min1 + 1)) + min1;
+        // const rannum40 = Math.floor(Math.random() * (max1 - min1 + 1)) + min1;
+        // const rannum50 = Math.floor(Math.random() * (max1 - min1 + 1)) + min1;
+        // const rannum60 = Math.floor(Math.random() * (max1 - min1 + 1)) + min1;
+        // const rannum70 = Math.floor(Math.random() * (max1 - min1 + 1)) + min1;
+
+        // const rannum101 = Math.floor(Math.random() * (max1 - min1 + 1)) + min1;
+        // const rannum201 = Math.floor(Math.random() * (max1 - min1 + 1)) + min1;
+        // const rannum301 = Math.floor(Math.random() * (max1 - min1 + 1)) + min1;
+        // const rannum401 = Math.floor(Math.random() * (max1 - min1 + 1)) + min1;
+        // const rannum501 = Math.floor(Math.random() * (max1 - min1 + 1)) + min1;
+        // const rannum601 = Math.floor(Math.random() * (max1 - min1 + 1)) + min1;
+        // const rannum701 = Math.floor(Math.random() * (max1 - min1 + 1)) + min1;
+
+        // const rannumsum1 = rannum10 + rannum20;
+        // const rannumsum2 = rannum10 + rannum20 + rannum30;
+        // const rannumsum3 = rannum10 + rannum20 + rannum30 + rannum40;
+        // const rannumsum4 = rannum10 + rannum20 + rannum30 + rannum40 + rannum50;
+        // const rannumsum5 = rannum10 + rannum20 + rannum30 + rannum40 + rannum50 + rannum60;
+        // const rannumsum6 = rannum10 + rannum20 + rannum30 + rannum40 + rannum50 + rannum60 + rannum70;
+
+
+        // const rannumsum101 = rannum101 + rannum201;
+        // const rannumsum201 = rannum101 + rannum201 + rannum301;
+        // const rannumsum301 = rannum101 + rannum201 + rannum301 + rannum401;
+        // const rannumsum401 = rannum101 + rannum201 + rannum301 + rannum401 + rannum501;
+        // const rannumsum501 = rannum101 + rannum201 + rannum301 + rannum401 + rannum501 + rannum601;
+        // const rannumsum601 = rannum101 + rannum201 + rannum301 + rannum401 + rannum501 + rannum601 + rannum701;
+        let clickCount0 = 0;
+        let clickCount1 = 0;
+
+        let get = 0;
+        let get2 = 0;
+
+        $(document).on('click', '#start', function () {
+            clickCount1 += 1;
+
+            if (clickCount1 === 1) {
+
+                $('#kanta').get(0).play();
+                setTimeout(function () {
+
+                    $('#start').hide();
+                    $('#start_titles').hide();
+                    $('#start_back').hide(); 
+                    if($('#start_back').hide()){
+                        $("#play-button").get(0).play();
+                        $('#kanta').get(0).pause();
+                    }
+
+
+
+                }, 11000);
+
+            }
+            if (clickCount1 === 2) {
+                $('#kanta').get(0).pause();
+                $('#start').hide();
+
+                $('#start_back').hide();
+                $('#start_titles').hide();
+                $("#play-button").get(0).play();
+
+            }
+        });
+
+        $(document).on('click', '#p1saikoro', function () {
+
+            const saikoro = [
+                1, 2, 3, 4, 5, 6
+            ]
+            const saikoro2 = [1, 2, 3, 4, 5, 6]
+
+            clickCount0 += 1;
+            const modoru = [1, 2, 3]
+            const rannum1 = modoru[Math.floor(Math.random() * modoru.length)];
+
+
+
+            if (clickCount0 % 2 === 1) {
+                console.log(rannum1)
+                if (rannum1 === 1 || rannum1 === 2) {
+                    get += saikoro[Math.floor(Math.random() * saikoro.length)];
+
+                    $('#road').text('●'.repeat(get))
+
+                    if (get >= 20) {
+
+                        $('#result1').css("visibility", "visible");
+                        $('#goal1').css("visibility", "visible");
+                        $("#play-button").get(0).pause();
+                        $("#play-button1").get(0).play();
+                    }
+                }
+                else if (clickCount0 >= 3) {
+                    get -= saikoro[Math.floor(Math.random() * saikoro.length)];
+                    $('#road').text('●'.repeat(get))
+
+                }
+                console.log(get)
+            }
+
+
+
+            if (clickCount0 % 2 === 0) {
+                console.log(rannum1)
+                if (rannum1 === 1 || rannum1 === 2) {
+                    get2 += saikoro2[Math.floor(Math.random() * saikoro2.length)];
+
+                    $('#p2road').text('●'.repeat(get2))
+
+
+                    if (get2 >= 20) {
+
+                        $('#result2').css("visibility", "visible");
+                        $('#goal2').css("visibility", "visible");
+                        $("#play-button").get(0).pause();
+                        $("#play-button2").get(0).play();
+                    }
+                }
+                else if (clickCount0 >= 4) {
+                    get2 -= saikoro2[Math.floor(Math.random() * saikoro2.length)];
+                    $('#p2road').text('●'.repeat(get2))
+
+
+                }
+                console.log(get2)
+
+            }
+
+        }
+        );
+
+
+        // })
+        // $(document).on('click', '#p1saikoro', function () {
+
+        //     clickCount1 += 1;
+
+
+
+        //     if (clickCount1 === 1) {
+
+
+        //         console.log(rannum10);
+        //         // let sum1 = Number(rannum10);
+
+        //         if (1 <= rannum10 <= 6) {
+
+        //             $('#kekka').text(rannum10 + 'コマ進む');
+        //             $('#road').text('●'.repeat(rannum10));
+        //             if (rannum10 >= 20) {
+
+        //                 $('#result1').css("visibility", "visible");
+        //             }
+        //         }
+
+        //     }
+
+
+        //     if (clickCount1 === 2) {
+
+
+        //         console.log(rannum20);
+
+
+        //         // let sum2 = Number(sum1) + Number(rannum20);
+        //         if
+        //             (1 <= rannum20 <= 6) {
+        //             $('#kekka').text(rannum20 + 'コマ進む');
+        //             $('#road2').text('●'.repeat(rannum20));
+        //             if (rannumsum1 >= 20) {
+
+        //                 $('#result1').css("visibility", "visible");
+        //             }
+        //         }
+        //     }
+
+        //     if (clickCount1 === 3) {
+
+
+        //         console.log(rannum30);
+
+
+        //         if
+        //             (1 <= rannum30 <= 6) {
+        //             $('#kekka').text(rannum30 + 'コマ進む');
+        //             $('#road3').text('●'.repeat(rannum30));
+
+        //         }
+        //     }
+
+
+
+        //     if (clickCount1 === 4) {
+
+        //         console.log(rannum40);
+        //         console.log(rannumsum3)
+        //         if
+        //             (1 <= rannum40 <= 6) {
+        //             if (rannumsum3 < 20) {
+
+
+        //                 $('#kekka').text(rannum40 + 'コマ進む');
+        //                 $('#road4').text('●'.repeat(rannum40));
+        //             }
+        //             if (rannumsum3 === 20) {
+        //                 $('#kekka').text(rannum40 + 'コマ進む');
+        //                 $('#road4').text('●'.repeat(rannum40));
+        //                 $('#result1').css("visibility", "visible");
+        //                 $('#goal1').css("visibility", "visible");
+        //                 $("#play-button").get(0).pause();
+        //                 $("#play-button1").get(0).play();
+        //             }
+        //             if (rannumsum3 > 20) {
+        //                 $('#kekka').text(rannum40 + 'コマ進む');
+        //                 $('#road4').text('●'.repeat(20 - rannumsum2));
+        //                 $('#result1').css("visibility", "visible");
+        //                 $('#goal1').css("visibility", "visible");
+        //                 $("#play-button").get(0).pause();
+        //                 $("#play-button1").get(0).play();
+
+        //             }
+
+        //         }
+        //     }
+
+        //     if (clickCount1 === 5) {
+
+
+        //         console.log(rannum50);
+
+        //         if
+        //             (1 <= rannum50 <= 6) {
+        //             if (rannumsum4 < 20) {
+        //                 $('#kekka').text(rannum50 + 'コマ進む');
+        //                 $('#road5').text('●'.repeat(rannum50));
+
+        //             }
+        //             if (rannumsum4 === 20) {
+        //                 $('#kekka').text(rannum50 + 'コマ進む');
+        //                 $('#road5').text('●'.repeat(rannum50));
+        //                 $('#result1').css("visibility", "visible");
+        //                 $('#goal1').css("visibility", "visible");
+        //                 $("#play-button").get(0).pause();
+        //                 $("#play-button1").get(0).play();
+        //             }
+        //             if (rannumsum4 > 20) {
+        //                 $('#kekka').text(rannum50 + 'コマ進む');
+        //                 $('#road5').text('●'.repeat(20 - rannumsum3));
+        //                 $('#result1').css("visibility", "visible");
+        //                 $('#goal1').css("visibility", "visible");
+        //                 $("#play-button").get(0).pause();
+        //                 $("#play-button1").get(0).play();
+        //             }
+
+        //         }
+        //     }
+        //     if (clickCount1 === 6) {
+
+
+        //         console.log(rannum60);
+
+        //         if
+        //             (1 <= rannum60 <= 6) {
+
+        //             if (rannumsum5 < 20) {
+        //                 $('#kekka').text(rannum60 + 'コマ進む');
+        //                 $('#road6').text('●'.repeat(rannum60));
+
+        //             }
+        //             if (rannumsum5 === 20) {
+        //                 $('#kekka').text(rannum60 + 'コマ進む');
+        //                 $('#road6').text('●'.repeat(rannum60));
+        //                 $('#result1').css("visibility", "visible");
+        //                 $('#goal1').css("visibility", "visible");
+        //                 $("#play-button").get(0).pause();
+        //                 $("#play-button1").get(0).play();
+        //             }
+        //             if (rannumsum5 > 20) {
+        //                 $('#kekka').text(rannum60 + 'コマ進む');
+        //                 $('#road6').text('●'.repeat(20 - rannumsum4));
+        //                 $('#result1').css("visibility", "visible");
+        //                 $('#goal1').css("visibility", "visible");
+        //                 $("#play-button").get(0).pause();
+        //                 $("#play-button1").get(0).play();
+
+        //             }
+
+        //         }
+        //     }
+        //     if (clickCount1 === 7) {
+
+
+        //         console.log(rannum70);
+
+        //         if
+        //             (1 <= rannum70 <= 6) {
+
+        //             if (rannumsum6 < 20) {
+        //                 $('#kekka').text(rannum70 + 'コマ進む');
+        //                 $('#road7').text('●'.repeat(rannum70));
+
+        //             }
+        //             if (rannumsum6 === 20) {
+        //                 $('#kekka').text(rannum70 + 'コマ進む');
+        //                 $('#road7').text('●'.repeat(rannum70));
+        //                 $('#result1').css("visibility", "visible");
+        //                 $('#goal1').css("visibility", "visible");
+        //                 $("#play-button").get(0).pause();
+        //                 $("#play-button1").get(0).play();
+        //             }
+        //             if (rannumsum6 > 20) {
+        //                 $('#kekka').text(rannum70 + 'コマ進む');
+        //                 $('#road7').text('●'.repeat(20 - rannumsum5));
+        //                 $('#result1').css("visibility", "visible");
+        //                 $('#goal1').css("visibility", "visible");
+        //                 $("#play-button").get(0).pause();
+        //                 $("#play-button1").get(0).play();
+        //             }
+
+        //         }
+        //     }
+
+        // });
+
+
+
+
+        // $(document).on('click', '#p2saikoro', function () {
+
+        //     clickCount2 += 1;
+
+        //     if (clickCount2 === 1) {
+
+        //         console.log(rannum101);
+        //         if (1 <= rannum101 <= 6) {
+
+
+        //             $('#kekka2').text(rannum101 + 'コマ進む');
+        //             $('#p2road').text('●'.repeat(rannum101));
+        //             if (rannum101 >= 20) {
+
+        //                 $('#result2').css("visibility", "visible");
+        //             }
+        //         }
+
+        //     }
+
+
+        //     if (clickCount2 === 2) {
+        //         // $(document).on('click', '#saikoro', function () {
+
+
+        //         console.log(rannum201);
+
+        //         if
+        //             (1 <= rannum201 <= 6) {
+        //             $('#kekka2').text(rannum201 + 'コマ進む');
+        //             $('#p2road2').text('●'.repeat(rannum201));
+        //             if (rannum101 + rannum201 >= 20) {
+
+        //                 $('#result2').css("visibility", "visible");
+        //             }
+        //         }
+        //     }
+
+        //     if (clickCount2 === 3) {
+
+
+        //         console.log(rannum301);
+        //         if
+        //             (1 <= rannum301 <= 6) {
+        //             $('#kekka2').text(rannum301 + 'コマ進む');
+        //             $('#p2road3').text('●'.repeat(rannum301));
+        //             if (rannum101 + rannum201 + rannum301 >= 20) {
+
+        //                 $('#result2').css("visibility", "visible");
+        //             }
+        //         }
+        //     }
+
+        //     if (clickCount2 === 4) {
+
+
+        //         console.log(rannum401);
+        //         if
+        //             (1 <= rannum401 <= 6) {
+        //             if (rannumsum301 < 20) {
+        //                 $('#kekka2').text(rannum401 + 'コマ進む');
+        //                 $('#p2road4').text('●'.repeat(rannum401));
+        //             }
+        //             if (rannumsum301 === 20) {
+        //                 $('#kekka2').text(rannum401 + 'コマ進む');
+        //                 $('#p2road4').text('●'.repeat(rannum401));
+        //                 $('#result2').css("visibility", "visible");
+        //                 $('#goal2').css("visibility", "visible");
+        //                 $("#play-button").get(0).pause();
+        //                 $("#play-button2").get(0).play();
+        //             }
+        //             if (rannumsum301 > 20) {
+        //                 $('#kekka2').text(rannum401 + 'コマ進む');
+        //                 $('#p2road4').text('●'.repeat(20 - rannumsum201));
+        //                 $('#result2').css("visibility", "visible");
+        //                 $('#goal2').css("visibility", "visible");
+        //                 $("#play-button").get(0).pause();
+        //                 $("#play-button2").get(0).play();
+        //             }
+
+        //         }
+        //     }
+
+
+        //     if (clickCount2 === 5) {
+
+
+        //         console.log(rannum501);
+        //         if (1 <= rannum501 <= 6) {
+        //             if (rannumsum401 < 20) {
+        //                 $('#kekka2').text(rannum501 + 'コマ進む');
+        //                 $('#p2road5').text('●'.repeat(rannum501));
+        //             }
+        //             if (rannumsum401 === 20) {
+        //                 $('#kekka2').text(rannum501 + 'コマ進む');
+        //                 $('#p2road5').text('●'.repeat(rannum501));
+        //                 $('#result2').css("visibility", "visible");
+        //                 $('#goal2').css("visibility", "visible");
+        //                 $("#play-button").get(0).pause();
+        //                 $("#play-button2").get(0).play();
+        //             }
+        //             if (rannumsum401 > 20) {
+        //                 $('#kekka2').text(rannum501 + 'コマ進む');
+        //                 $('#p2road5').text('●'.repeat(20 - rannumsum301));
+        //                 $('#result2').css("visibility", "visible");
+        //                 $('#goal2').css("visibility", "visible");
+        //                 $("#play-button").get(0).pause();
+        //                 $("#play-button2").get(0).play();
+        //             }
+
+        //         }
+        //     }
+        //     if (clickCount2 === 6) {
+
+
+        //         console.log(rannum601);
+        //         if (1 <= rannum601 <= 6) {
+        //             if (rannumsum501 < 20) {
+        //                 $('#kekka2').text(rannum601 + 'コマ進む');
+        //                 $('#p2road6').text('●'.repeat(rannum601));
+        //             }
+        //             if (rannumsum501 === 20) {
+        //                 $('#kekka2').text(rannum601 + 'コマ進む');
+        //                 $('#p2road6').text('●'.repeat(rannum601));
+        //                 $('#result2').css("visibility", "visible");
+        //                 $('#goal2').css("visibility", "visible");
+        //                 $("#play-button").get(0).pause();
+        //                 $("#play-button2").get(0).play();
+        //             }
+        //             if (rannumsum501 > 20) {
+        //                 $('#kekka2').text(rannum601 + 'コマ進む');
+        //                 $('#p2road6').text('●'.repeat(20 - rannumsum401));
+        //                 $('#result2').css("visibility", "visible");
+        //                 $('#goal2').css("visibility", "visible");
+        //                 $("#play-button").get(0).pause();
+        //                 $("#play-button2").get(0).play();
+        //             }
+
+        //         }
+        //     }
+        //     if (clickCount2 === 7) {
+
+
+        //         console.log(rannum701);
+        //         if (1 <= rannum701 <= 6) {
+        //             if (rannumsum601 < 20) {
+        //                 $('#kekka2').text(rannum701 + 'コマ進む');
+        //                 $('#p2road7').text('●'.repeat(rannum701));
+        //             }
+        //             if (rannumsum601 === 20) {
+        //                 $('#kekka2').text(rannum701 + 'コマ進む');
+        //                 $('#p2road7').text('●'.repeat(rannum701));
+        //                 $('#result2').css("visibility", "visible");
+        //                 $('#goal2').css("visibility", "visible");
+        //                 $("#play-button").get(0).pause();
+        //                 $("#play-button2").get(0).play();
+        //             }
+        //             if (rannumsum601 > 20) {
+        //                 $('#kekka2').text(rannum701 + 'コマ進む');
+        //                 $('#p2road7').text('●'.repeat(20 - rannumsum501));
+        //                 $('#result2').css("visibility", "visible");
+        //                 $('#goal2').css("visibility", "visible");
+        //                 $("#play-button").get(0).pause();
+        //                 $("#play-button2").get(0).play();
+        //             }
+
+        //         }
+        //     }
+
+
+        // }
+
+        // );
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

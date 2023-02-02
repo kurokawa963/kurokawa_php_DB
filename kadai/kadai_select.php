@@ -12,6 +12,7 @@ if(
   // なければエラー
 }
 
+
 $place=$_POST['place'];
 $genre=$_POST['genre'];
 $intro=$_POST['intro'];
